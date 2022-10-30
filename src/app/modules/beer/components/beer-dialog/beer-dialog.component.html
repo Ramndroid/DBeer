@@ -1,0 +1,35 @@
+<!-- Spinner -->
+<mat-grid-list cols="1" *ngIf="!beer; else beerInfo">
+    <mat-grid-tile>
+        <mat-spinner color="accent"></mat-spinner>
+    </mat-grid-tile>
+</mat-grid-list>
+<!-- END Spinner -->
+
+<ng-template #beerInfo>
+
+    <!-- Beer name -->
+    <h2 mat-dialog-title>{{ beer.name }}</h2>
+    <!-- END Beer name -->
+
+    <!-- Beer details -->
+    <mat-dialog-content class="mat-typography">
+
+        <h3>{{ beer.tagline }}</h3>
+
+        <div fxLayout="row" fxLayoutAlign="center">
+            <img mat-card-image [src]="beer.image_url | image">
+        </div>
+
+        <beer-details [beer]="beer"></beer-details>
+
+    </mat-dialog-content>
+    <!-- END Beer details -->
+
+    <!-- Close button -->
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close color="warn">Close</button>
+    </mat-dialog-actions>
+    <!-- END close button -->
+
+</ng-template>

@@ -1,0 +1,93 @@
+<!-- Input text & select -->
+<div fxLayout.xs="column" 
+     fxLayout="row"
+     fxLayoutGap.xs="0px"
+     fxLayoutGap="20px">
+
+    <!-- Input text -->
+    <div fxLayout="column"
+         fxFlex="50">
+        <mat-form-field appearance="fill">
+
+            <mat-label>Word to search</mat-label>
+
+            <input type="text" 
+                   placeholder="Enter a word" 
+                   matInput 
+                   [(ngModel)]="wordToSearch" 
+                   [matAutocomplete]="auto"
+                   (input)="searchTheWord()">
+
+            <button *ngIf="wordToSearch" 
+                    matSuffix 
+                    mat-icon-button 
+                    aria-label="Clear" 
+                    (click)="clearWordToSearchAndBeers()">
+                <mat-icon>close</mat-icon>
+            </button>
+
+            <mat-icon matPrefix>search</mat-icon>
+
+            <mat-autocomplete 
+                autoActiveFirstOption 
+                #auto="matAutocomplete">
+
+                <mat-option 
+                    value="" 
+                    *ngIf="beers.length === 0 && wordToSearch.trim().length > 0">
+                    Nothing to show
+                </mat-option>
+
+            </mat-autocomplete>
+
+        </mat-form-field>
+    </div>
+    <!-- END Input text -->
+
+    <!-- Mat-select -->
+    <div fxLayout="column"
+         fxFlex="50">
+
+        <mat-form-field appearance="fill">
+
+            <mat-label>Search by</mat-label>
+
+            <mat-select
+                [(value)]="searchParam" 
+                (valueChange)="searchTheWord()">
+
+                <mat-option *ngFor="let param of searchParams" 
+                            [value]="param.value">
+                    {{ param.name }}
+                </mat-option>
+            
+            </mat-select>
+
+        </mat-form-field>
+
+    </div>
+    <!-- END Mat-select -->
+
+</div>
+<!-- END Input text & select -->
+
+<!-- Cards to list searches -->
+<div fxLayout.xs="column" 
+     fxLayout="row wrap" 
+     fxLayoutAlign="center" 
+     fxLayoutGap="20px">
+
+    <div fxFlex.sm="30" 
+         fxFlex.lg="15" 
+         fxFlex="20"   
+         *ngFor="let beer of beers">
+
+        <!-- App-beer-card -->
+        <app-beer-card [beer]="beer" 
+                       (click)="onCardClick(beer.id)">
+        </app-beer-card>
+        <!-- END App-beer-card -->
+
+    </div>
+</div>
+<!-- END Cards to list searches -->

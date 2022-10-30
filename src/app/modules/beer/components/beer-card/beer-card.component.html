@@ -1,0 +1,22 @@
+<!-- Mat-card -->
+<mat-card class="oncard">
+
+    <!-- Image -->
+    <div fxLayout="row" 
+         fxLayoutAlign="center">
+
+        <img mat-card-image [src]="beer.image_url | image">
+
+    </div>
+    <!-- END Image -->
+
+    <!-- Title & Subtitle -->
+    <mat-card-header fxLayout="row" 
+                     fxLayoutAlign="bottom">
+        <mat-card-title>{{ beer.name }}</mat-card-title>
+        <mat-card-subtitle>{{ beer.tagline }}</mat-card-subtitle>
+    </mat-card-header>  
+    <!-- END Title & Subtitle -->
+
+</mat-card>
+<!-- END Mat-card -->

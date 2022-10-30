@@ -1,0 +1,64 @@
+<p><span class="mat-body">{{ beer.description }}</span></p>
+
+<mat-divider></mat-divider>
+
+<p class="mat-h3">First brewed: <span class="mat-body">{{ beer.first_brewed }}</span></p>
+
+<p class="mat-h3">Brewers tips: <span class="mat-body">{{ beer.brewers_tips }}</span></p>
+
+<mat-divider></mat-divider>
+
+<!-- Details -->
+<p class="mat-h3">Attenuation level: <span class="mat-body">{{ beer.attenuation_level }}</span></p>
+<p class="mat-h3">Volume: <span class="mat-body">{{ beer.volume.value }} {{ beer.volume.unit }}</span></p>
+<p class="mat-h3">Boil volume: <span class="mat-body">{{ beer.boil_volume.value }} {{ beer.boil_volume.unit }}</span></p>
+
+<mat-divider></mat-divider>
+
+<mat-grid-list cols="2" rowHeight="35px">
+    <mat-grid-tile><p class="mat-h3 text-inside-grid">ABV: <span class="mat-body">{{ beer.abv }}%</span></p></mat-grid-tile>
+    <mat-grid-tile><p class="mat-h3 text-inside-grid">IBU: <span class="mat-body">{{ beer.ibu }}</span></p></mat-grid-tile>
+    <mat-grid-tile><p class="mat-h3 text-inside-grid">EBC: <span class="mat-body">{{ beer.ebc }}</span></p></mat-grid-tile>
+    <mat-grid-tile><p class="mat-h3 text-inside-grid">SRM: <span class="mat-body">{{ beer.srm }}</span></p></mat-grid-tile>
+    <mat-grid-tile><p class="mat-h3 text-inside-grid">PH: <span class="mat-body">{{ beer.ph }}</span></p></mat-grid-tile>
+</mat-grid-list>
+<!-- END Details -->
+
+<mat-divider></mat-divider>
+
+<!-- Ingredients -->
+<p class="mat-h3">Ingredients</p>
+<div *ngIf="beer.ingredients.malt.length > 0">
+    <p><span class="mat-body ident">Malt:</span></p>
+    <div class="ident" *ngFor="let ingredient of beer.ingredients.malt">
+        <p><span class="mat-body ident">{{ ingredient.name }} ({{ ingredient.amount.value }} {{ ingredient.amount.unit }})</span></p>
+    </div>
+</div>
+
+<div *ngIf="beer.ingredients.hops.length > 0">
+    <p><span class="mat-body ident">Hops:</span></p>
+    <div class="ident" *ngFor="let ingredient of beer.ingredients.hops">
+        <p><span class="mat-body ident">{{ ingredient.name }} ({{ ingredient.amount.value }} {{ ingredient.amount.unit }})</span></p>
+    </div>
+</div>
+
+<p><span class="mat-body ident">Yeast:</span></p>
+<div class="ident">
+    <p><span class="mat-body ident">{{ beer.ingredients.yeast }}</span></p>
+</div>
+<!-- END Ingredients -->
+
+<mat-divider></mat-divider>
+
+<!-- Food pairing -->
+<div *ngIf="beer.food_pairing.length > 0">
+    <p class="mat-h3">Food pairing</p>
+    <div *ngFor="let food of beer.food_pairing">
+        <p><span class="mat-body ident">{{ food }}</span></p>
+    </div>
+</div>
+<!-- END Food pairing -->
+
+<mat-divider></mat-divider>
+
+<p class="mat-h3">Contributed by: <span class="mat-body">{{ beer.contributed_by }}</span></p>
