@@ -16,3 +16,13 @@ Main application module. Includes a beer search engine, and a list of cards repr
 - **Pipes**: Includes a pipe, image, which adds an image of a bottle in the event that an element extracted from the api does not include an image.
 - **Services**: Query with the punk API.
 
+
+### Graphic & responsive engine
+This app uses [Angular Flex Layout](https://github.com/angular/flex-layout) and [Material Angular](https://material.angular.io/).
+
+
+### BEER API
+The information of the beers is extracted from [The Punk API V2](https://punkapi.com/documentation/v2).
+
+
+

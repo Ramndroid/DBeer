@@ -61,7 +61,6 @@ export class BeersService {
     return this.http.get<Beer[]>(`${this.punkApiUrl}?${searchParam}=${wordToSearch}`);
   }
 
-  // Get beer according to id. Returns a single element array.
   /**
    * Get beer according to id. Used to display the beer information in the material-dialog.
    * @param id beer id.
